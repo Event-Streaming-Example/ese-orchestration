@@ -61,11 +61,20 @@ docker-compose -f ./docker/ese-client.compose.yml -p ese-frontend up -d
 
 We have adashboard which will consume the live events sent from the FE via the BE. Run the below given command to start the consumer. This will open the dashboard on `http://localhost:8501`.
 
-When asked to provide the data-source for live events, give the ese-server shard that we have made in the above usecase. Hence provide the URL : `http://localhost:2003`
+When asked to provide the data-source for live events, give the ese-server shard that we have made in the above usecase.
+
+1. If you are running both the `ese-server` and the `ese-consumer` on the same machine, the URL would be : `http://host.docker.internal:2003/events`
+2. If you are running the `ese-server` and the `ese-consumer` on different machine, fetch the Server URL from the below step.
 
 ```bash
-docker run -it -p 8501:8501 --name ese-container saumyabhatt10642/ese-consumer
+docker run -it -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
 ```
+
+<br>
+
+**Why is the URL for when both the server and consumer running on same machine `host.docker.internal` and not `localhost`?**
+
+This is so because both of them are running on different Docker containers but are still on the same machine. Hence when consumer tries to access `localhost`, it will call the localhost of the container on which it is running. `host.docker.internal` bypasses this and directly calls the host machine.
 
 ---
 
@@ -77,4 +86,4 @@ Since all of our ese-server containers are running on the same machine, their IP
 ifconfig | grep netmask
 ```
 
-The complete address of where your specific ese-server is running would thus be: `<ip address>:2000`
+The complete address of where your specific ese-server is running would thus be: `<ip address>:2003`
