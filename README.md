@@ -6,16 +6,6 @@ This repo houses all the required configs as to how to orchestrate the FE, BE an
 
 ---
 
-## Setting up Frontend
-
-Run the below given docker componse file. This will fire up 4 instance of the `ese-client` in simulation mode where it will emmit random click streams and order events to the BE with a delay of 300ms uptil 50,000 events have been emitted.
-
-```bash
-docker-compose -f ./docker/ese-client.compose.yml -p ese-frontend up -d
-```
-
----
-
 ## Setting up Backend
 
 We shall be using docker compose to set up the BE servers and the required monitoring. The purpose of each is described below.
@@ -54,6 +44,16 @@ This will setup 3 containers of the `ese-server` images. They will act as shards
 2. Provide the username and password as `admin`.
 3. Choose prometheus as your data source and provide the URL: `http:prometheus-server:9090`
 4. Choose the import dashboard option and upload the [ESE Server Grafana Dashboard.json](./observability/ESE%20Server%20Grafana%20Dashboard.json) file.
+
+---
+
+## Setting up Frontend
+
+Once the BE is up and running, we can now connect the FE to it. Run the below given docker componse file. This will fire up 4 instance of the `ese-client` in simulation mode where it will emmit random click streams and order events to the BE with a delay of 300ms uptil 50,000 events have been emitted.
+
+```bash
+docker-compose -f ./docker/ese-client.compose.yml -p ese-frontend up -d
+```
 
 ---
 
