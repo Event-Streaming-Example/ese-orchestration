@@ -1,0 +1,21 @@
+version: "1"
+services:
+  ese-client1:
+    image: saumyabhatt10642/ese-client:simulate
+    ports:
+      - "3001:3001"
+
+  ese-client2:
+    image: saumyabhatt10642/ese-client:simulate
+    ports:
+      - "3002:3002"
+
+  ese-client3:
+    image: saumyabhatt10642/ese-client:simulate
+    ports:
+      - "3003:3003"
+
+  ese-client4:
+    image: saumyabhatt10642/ese-client:simulate
+    ports:
+      - "3004:3004"
