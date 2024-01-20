@@ -35,7 +35,7 @@ Our overall architecture for the BE would look as follows:
 
 ### Load Balancing
 
-Shards `ese-server1` and `ese-server2` will be behind a HAProxy Load Balancer. The requests will be served based on the default algorithm which in this case is the round-robin algorithm.
+Shards `ese-server1` and `ese-server2` will be behind a HAProxy Load Balancer. The requests will be served based on the Least Connection algorithm.
 
 The Load Balancer is exposed on `http://localhost:8100`. Real time stats of the connections at the load balancer could be found at `http://localhost:8100/stats`.
 
