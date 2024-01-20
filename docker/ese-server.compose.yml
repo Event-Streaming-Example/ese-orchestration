@@ -1,5 +1,13 @@
 version: "1.2"
 services:
+  # LOAD BALANCER RUNNING ON PORT 8100
+  elb:
+    image: haproxy
+    ports:
+      - "8100:8100"
+    volumes:
+      - ../haproxy:/usr/local/etc/haproxy
+
   # SERVER 1 RUNNING ON PORT 2001
   ese-server1:
     image: saumyabhatt10642/ese-server
