@@ -2,7 +2,11 @@
 
 This repo houses all the required configs as to how to orchestrate the FE, BE and other components for a demo.
 
-**NOTE :** For now, the frontend is not sending the events to the BE but just printing to the console
+**Frontend Stack :** React
+
+**Backend Stack :** Go Server, Redis DB
+
+**Infra Stack :** HAProxy LB, Docker containers
 
 ---
 
@@ -10,19 +14,21 @@ This repo houses all the required configs as to how to orchestrate the FE, BE an
 
 We shall be using docker compose to set up the BE servers and the required monitoring. The purpose of each is described below.
 
-| Image Name             | Endpoint              | Purpose                                                                 |
-| ---------------------- | --------------------- | ----------------------------------------------------------------------- |
-| `ese-server1`          | `http:localhost:2001` | This shard will only accept simple REST calls from the `ese-client`     |
-| `ese-server2`          | `http:localhost:2002` | This shard will only accept websocket connections from the `ese-client` |
-| `ese-server-analytics` | `http:localhost:2003` | This shard will only accept calls from the `ese-consumer`               |
+| Image Name             | Endpoint                | Purpose                                                       |
+| ---------------------- | ----------------------- | ------------------------------------------------------------- |
+| `ese-server1`          | `http://localhost:2001` | This shard will only accept connections from the `ese-client` |
+| `ese-server2`          | `http://localhost:2002` | This shard will only accept connections from the `ese-client` |
+| `ese-server-analytics` | `http://localhost:2003` | This shard will only accept calls from the `ese-consumer`     |
+
+The shard `ese-server1` and `ese-server2` will be behind a Load-Balancer that is exposed on `http://localhost:8100`.
 
 Apart from the above mentioned ese-servers, the following containers will also be setup to facilitate teh functionality and offer monitoring and observability.
 
-| Image Name          | Endpoint              | Purpose                                                                                                                                        |
-| ------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `redis-server`      | `http:localhost:6379` | This container will act as our data store to which all the `ese-server` connect to                                                             |
-| `prometheus-server` | `http:localhost:9090` | This container will scrape the endpoint from the different `ese-server` containers that are running and store it in its time series data store |
-| `grafana-server`    | `http:localhost:3000` | This container will act as our observability dashboard for all the ese-server                                                                  |
+| Image Name          | Endpoint                | Purpose                                                                                                                                        |
+| ------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `redis-server`      | `http://localhost:6379` | This container will act as our data store to which all the `ese-server` connect to                                                             |
+| `prometheus-server` | `http://localhost:9090` | This container will scrape the endpoint from the different `ese-server` containers that are running and store it in its time series data store |
+| `grafana-server`    | `http://localhost:3000` | This container will act as our observability dashboard for all the ese-server                                                                  |
 
 Our overall architecture for the BE would look as follows:
 
