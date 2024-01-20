@@ -20,12 +20,11 @@ We shall be using docker compose to set up the BE servers and the required monit
 | `ese-server2`          | `http://localhost:2002` | This shard will only accept connections from the `ese-client` |
 | `ese-server-analytics` | `http://localhost:2003` | This shard will only accept calls from the `ese-consumer`     |
 
-The shard `ese-server1` and `ese-server2` will be behind a Load-Balancer that is exposed on `http://localhost:8100`.
-
-Apart from the above mentioned ese-servers, the following containers will also be setup to facilitate teh functionality and offer monitoring and observability.
+Apart from the above mentioned ese-servers, the following containers will also be setup to facilitate the functionality and offer monitoring and observability.
 
 | Image Name          | Endpoint                | Purpose                                                                                                                                        |
 | ------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `elb`               | `http://localhost:8100` | This is our Load Balancer for the ese-servers                                                                                                  |
 | `redis-server`      | `http://localhost:6379` | This container will act as our data store to which all the `ese-server` connect to                                                             |
 | `prometheus-server` | `http://localhost:9090` | This container will scrape the endpoint from the different `ese-server` containers that are running and store it in its time series data store |
 | `grafana-server`    | `http://localhost:3000` | This container will act as our observability dashboard for all the ese-server                                                                  |
@@ -33,6 +32,12 @@ Apart from the above mentioned ese-servers, the following containers will also b
 Our overall architecture for the BE would look as follows:
 
 ![ESE Servers docker compose overview](./images/ese-servers-dc.png)
+
+### Load Balancing
+
+Shards `ese-server1` and `ese-server2` will be behind a HAProxy Load Balancer. The requests will be served based on the default algorithm which in this case is the round-robin algorithm.
+
+The Load Balancer is exposed on `http://localhost:8100`. Real time stats of the connections at the load balancer could be found at `http://localhost:8100/stats`.
 
 ### Setting up the ESE-Servers
 
@@ -75,8 +80,6 @@ When asked to provide the data-source for live events, give the ese-server shard
 ```bash
 docker run -it -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
 ```
-
-<br>
 
 **Why is the URL for when both the server and consumer running on same machine `host.docker.internal` and not `localhost`?**
 
