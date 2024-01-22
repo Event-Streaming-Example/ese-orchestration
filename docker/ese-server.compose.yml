@@ -50,7 +50,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ../observability/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../configs/prometheus.yml:/etc/prometheus/prometheus.yml
 
   # COMMON GRAFANA SERVER RUNNING ON PORT 3000
   grafana-server:
