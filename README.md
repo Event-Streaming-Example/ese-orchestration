@@ -62,6 +62,16 @@ This will setup 3 containers of the `ese-server` images. They will act as shards
 
 Once the BE is up and running, we can now connect the FE to it. Run the below given docker componse file. This will fire up 4 instance of the `ese-client` in simulation mode where it will emmit random click streams and order events to the BE with a delay of 300ms uptil 50,000 events have been emitted.
 
+Remeber to set the correct environment variable for the ese-client to communicate with the ese-servers.
+
+```bash
+# setting environment variable in windows
+($env:REACT_APP_BE_SERVER = "http://localhost:2001")
+
+# setting environment variable in macOS
+export REACT_APP_BE_SERVER=http://localhost:2001
+```
+
 ```bash
 docker-compose -f ./docker/ese-client.compose.yml -p ese-frontend up -d
 ```
