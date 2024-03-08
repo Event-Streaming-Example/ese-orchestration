@@ -22,7 +22,7 @@ docker-compose -f ./mail/docker-compose.yml -p ese-mailer up -d
 docker-compose -f ./server/docker-compose.yml -p ese-servers up -d
 
  # 3. Setting up the ese-consumer next
-docker run -it -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
+docker run -d -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
 
  # 4. Setting up a standalone ese-client
 docker run -d -p 8080:80 --env-file ./client/.env --name ese-client-standalone saumyabhatt10642/ese-client
