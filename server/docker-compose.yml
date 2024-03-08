@@ -6,7 +6,7 @@ services:
     ports:
       - "8100:8100"
     volumes:
-      - ../haproxy:/usr/local/etc/haproxy
+      - ./:/usr/local/etc/haproxy
 
   # SERVER 1 RUNNING ON PORT 2001
   ese-server1:
@@ -50,7 +50,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ../configs/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   # COMMON GRAFANA SERVER RUNNING ON PORT 3000
   grafana-server:

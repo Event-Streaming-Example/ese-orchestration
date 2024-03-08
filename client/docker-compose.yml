@@ -3,19 +3,19 @@ services:
   ese-client1:
     image: saumyabhatt10642/ese-client:simulate
     env_file:
-      - ../configs/.env
+      - ./.env
 
   ese-client2:
     image: saumyabhatt10642/ese-client:simulate
     env_file:
-      - ../configs/.env
+      - ./.env
 
   ese-client3:
     image: saumyabhatt10642/ese-client:simulate
     env_file:
-      - ../configs/.env
+      - ./.env
 
   ese-client4:
     image: saumyabhatt10642/ese-client:simulate
     env_file:
-      - ../configs/.env
+      - ./.env

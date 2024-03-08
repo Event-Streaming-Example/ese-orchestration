@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  mailer:
+    image: saumyabhatt10642/ese-mailer
+    depends_on:
+      - rabbitmq
+      - mailhog
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
