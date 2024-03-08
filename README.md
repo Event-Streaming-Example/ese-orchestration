@@ -31,3 +31,18 @@ Execute the below given commands in order to setup all the components on a singl
 docker-compose -f ./client/docker-compose.yml -p ese-clients up -d
 
 ```
+
+## UI Hostings
+
+If you are setting up all the components on the same machine, different UIs can be found as below.
+
+If some components are on a different machine, change the base URL to the machine's IP address. The port remains the same.
+
+| Address                       | Description         |
+| ----------------------------- | ------------------- |
+| <http://localhost:8080>       | Standalone Client   |
+| <http://localhost:8100/stats> | Load Balancer Stats |
+| <http://localhost:3000>       | Grafana Dashboard   |
+| <http://localhost:8501>       | Consumer Dashboard  |
+| <http://localhost:15672>      | Mailer Queue Stats  |
+| <http://localhost:8025>       | Mailer Inbox UI     |
