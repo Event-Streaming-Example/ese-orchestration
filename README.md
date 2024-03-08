@@ -22,7 +22,7 @@ Execute the below given commands in order to setup all the components on a singl
  docker-compose -f ./server/docker-compose.yml -p ese-servers up -d
 
  # 3. Setting up the ese-consumer next
- docker-compose -f ./consumer/docker-compose.yml -p ese-consumer up -d
+docker run -it -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
 
  # 4. Setting up a standalone ese-client
  docker run -d -p 8080:80 --env-file ./client/env --name ese-client-standalone saumyabhatt10642/ese-client
