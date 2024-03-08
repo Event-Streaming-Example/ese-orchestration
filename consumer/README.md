@@ -7,7 +7,7 @@ Our consumer in this example is someone who wants to get events from the client 
 - **Number of instances:** 1
 
 ```bash
-docker run -it -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
+docker run -d -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
 ```
 
 - **Stack:** Python, [Streamlit](https://docs.streamlit.io/get-started) App
