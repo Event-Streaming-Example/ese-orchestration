@@ -13,7 +13,8 @@ docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
 
 __Note:__
 
-For the Kafka, let the `post-setup` container exit successfully before using any Kafka entities.
+- For the Kafka, let the `post-setup` container exit successfully before using any Kafka entities.
+- `post-setup` service will create the required topics and schemas for the rest of the services to use.
 
 ## Setting up UI
 
