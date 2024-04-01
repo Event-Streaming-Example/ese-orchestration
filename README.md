@@ -21,9 +21,8 @@ docker-compose -f ./mail/docker-compose.yml -p ese-mailer up -d
  # 2. Setting up the ese-server next
 docker-compose -f ./server/docker-compose.yml -p ese-servers up -d
 
-# 3. Starting Kafka entites and register schema (run the register_schema.sh once the schema-registry is up)
-docker-compose -f ./kafka/dockerfile-compose.yml -p ese-kafka up -d
-bash ./kafka/register_schema.sh
+# 3. Starting Kafka entites
+docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d 
 
  # 4. Setting up the ese-consumer next
 docker run -d -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer
@@ -48,12 +47,10 @@ If you are setting up all the components on the same machine, different UIs can 
 | <http://localhost:8501>       | Consumer Dashboard  |
 | <http://localhost:15672>      | Mailer Queue Stats  |
 | <http://localhost:8025>       | Mailer Inbox UI     |
-| <http://localhost:8082>       | Kafka UI            | 
+| <http://localhost:8083>       | Kafka UI            | 
 
 If some components are on a different machine, change the base URL to the machine's IP address. The port remains the same.
 
 __Note:__
 
-For connecting to the Kafka Cluster from UI:
-- Bootstratp server endpoint: `broker:9092`
-- Schema Registry endpoint: `http://schema-registry:8081`
+For the Kafka, let the `post-setup` container exit successfully before using any Kafka entities.

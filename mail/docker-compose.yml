@@ -7,6 +7,7 @@ services:
     depends_on:
       - rabbitmq
       - mailhog
+    restart: on-failure
 
   rabbitmq:
     image: rabbitmq:3-management
