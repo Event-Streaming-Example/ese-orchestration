@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create the topic "web-events"
-kafka-topics --create --bootstrap-server broker:9092 --topic web-events --partitions 3 --replication-factor 1
+kafka-topics --create --bootstrap-server broker:29092 --topic web-events --partitions 3 --replication-factor 1
 
 wait_for_schema_registry() {
     until curl -sSf -X GET http://schema-registry:8081/subjects >/dev/null; do

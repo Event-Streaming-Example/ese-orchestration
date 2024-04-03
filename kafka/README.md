@@ -21,5 +21,5 @@ __Note:__
 The UI for managing topics and schema is hosted at <http://localhost:8083>
 
 For connecting to the Kafka Cluster from UI:
-- Bootstratp server endpoint: <broker:9092>
+- Bootstratp server endpoint: <broker:29092>
 - Schema Registry endpoint: <http://schema-registry:8081>
