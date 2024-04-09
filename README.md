@@ -12,6 +12,7 @@ Execute the below given commands in order to setup all the components on a singl
 2. [ESE-Server](./server/README.md)
 3. [ESE-Consumer](./consumer/README.md)
 4. [ESE-Mailer](./mail/README.md)
+5. [ESE-Kafka](./kafka/README.md)
 
 ```shell
 
