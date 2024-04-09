@@ -3,7 +3,7 @@
 This component houses the Kafka Configuration
 
 ```shell
-docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d 
+docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
 ```
 
 - **ESE Role:** streams events from the ese-client
