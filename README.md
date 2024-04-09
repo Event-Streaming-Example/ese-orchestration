@@ -21,8 +21,8 @@ docker-compose -f ./mail/docker-compose.yml -p ese-mailer up -d
  # 2. Setting up the ese-server next
 docker-compose -f ./server/docker-compose.yml -p ese-servers up -d
 
-# 3. Starting Kafka entites
-docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
+# 3. Starting Kafka entites. Set the IP to the one on which Kafka will run
+export ESE_HOST_IP=192.168.29.191  && docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
 
  # 4. Setting up the ese-consumer next
 docker run -d -p 8501:8501 --name ese-consumer saumyabhatt10642/ese-consumer

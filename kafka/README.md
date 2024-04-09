@@ -3,7 +3,7 @@
 This component houses the Kafka Configuration
 
 ```shell
-docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
+export ESE_HOST_IP=192.168.29.191  && docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
 ```
 
 - **ESE Role:** streams events from the ese-client
@@ -15,6 +15,7 @@ __Note:__
 
 - For the Kafka, let the `post-setup` container exit successfully before using any Kafka entities.
 - `post-setup` service will create the required topics and schemas for the rest of the services to use.
+- Make sure the `ESE_HOST_IP` has the value same as the IP address as that of the machine on which it is running.
 
 ## Setting up UI
 
