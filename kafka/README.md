@@ -9,7 +9,7 @@ docker-compose -f ./kafka/docker-compose.yml -p ese-kafka up -d
 - **ESE Role:** streams events from the ese-client
 - **Talks to:** ese-consmer who pulls from this stream
 - **Number of instances:** 1
-- **Number of Brokers:** 1
+- **Number of Brokers:** 2
 
 __Note:__
 
@@ -21,5 +21,5 @@ __Note:__
 The UI for managing topics and schema is hosted at <http://localhost:8083>
 
 For connecting to the Kafka Cluster from UI:
-- Bootstratp server endpoint: <broker:19092>
+- Bootstratp server endpoint: <broker1:9092>, <broker2:9092>
 - Schema Registry endpoint: <http://schema-registry:8081>
