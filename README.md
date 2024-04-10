@@ -48,7 +48,7 @@ If you are setting up all the components on the same machine, different UIs can 
 | <http://localhost:8501>       | Consumer Dashboard  |
 | <http://localhost:15672>      | Mailer Queue Stats  |
 | <http://localhost:8025>       | Mailer Inbox UI     |
-| <http://localhost:8083>       | Kafka UI            |
+| <http://localhost:9090>       | Kafka UI            |
 
 If some components are on a different machine, change the base URL to the machine's IP address. The port remains the same.
 

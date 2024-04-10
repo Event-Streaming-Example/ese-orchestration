@@ -62,11 +62,23 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: DOCKER_LISTENER
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+  apigw:
+    image: confluentinc/cp-kafka-rest:latest
+    container_name: apigw
+    ports:
+      - "8082:8082"
+    depends_on:
+      - broker1
+      - broker2
+    environment:
+      KAFKA_REST_BOOTSTRAP_SERVERS: PLAINTEXT://broker1:9092,PLAINTEXT://broker2:9092
+      KAFKA_REST_LISTENERS: http://0.0.0.0:8082
+
   ui:
-    container_name: kafka-ui
+    container_name: ui
     image: provectuslabs/kafka-ui:latest
     ports:
-      - 8083:8080
+      - 9090:8080
     environment:
       DYNAMIC_CONFIG_ENABLED: true
 

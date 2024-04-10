@@ -16,8 +16,9 @@ export ESE_HOST_IP=192.168.29.191  && docker-compose -f ./kafka/docker-compose.y
 - For the Kafka, let the `post-setup` container exit successfully before using any Kafka entities.
 - `post-setup` service will create the required topics and schemas for the rest of the services to use.
 - Make sure the `ESE_HOST_IP` has the value same as the IP address as that of the machine on which it is running.
+- A REST proxy has also been configured which will act as an API Gateway for the public facing applications (ese-clients) to interract with Kafka.
 
-__Listener Configuration:__
+### Listener Configuration:
 
 3 Listeners are configured for each broker:
 
@@ -27,23 +28,39 @@ __Listener Configuration:__
 
 ### Connecting to Kafka locally
 
-If the Kafka and the `ese-client` are running on the same machine, use the brokers given below to connect to Kafka:
+If the Kafka and the `ese-client` are running on the same machine, use the addresses given below to connect to Kafka:
+
+_Connecting directly to brokers_
 
 ```text
 localhost:19092,localhost:29092
+```
+
+_Connecting via an API-Gateway_
+
+```text
+localhost:8082
 ```
 
 ### Connecting to Kafka over the network
 
 If the Kafka and the `ese-client` are running on the same machine, use the brokers given below to connect to Kafka. Provide the IP of the machin on which Kafka is running (`ESE_HOST_IP`)
 
+_Connecting directly to brokers_
+
 ```text
 192.168.29.191:19093,192.168.29.191:29093
 ```
 
+_Connecting via an API-Gateway_
+
+```text
+192.168.29.191:8082
+```
+
 ## Setting up UI
 
-The UI for managing topics and schema is hosted at <http://localhost:8083>
+The UI for managing topics and schema is hosted at <http://localhost:9090>
 
 For connecting to the Kafka Cluster from UI:
 - Bootstratp server endpoint: <broker1:9092>, <broker2:9092>
