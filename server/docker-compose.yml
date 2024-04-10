@@ -5,6 +5,7 @@ services:
     image: haproxy
     ports:
       - "8100:8100"
+    restart: on-failure
     volumes:
       - ./:/usr/local/etc/haproxy
 

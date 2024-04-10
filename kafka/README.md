@@ -60,7 +60,7 @@ _Connecting via an API-Gateway_
 
 ## Setting up UI
 
-The UI for managing topics and schema is hosted at <http://localhost:9090>
+The UI for managing topics and schema is hosted at <http://localhost:8083>
 
 For connecting to the Kafka Cluster from UI:
 - Bootstratp server endpoint: <broker1:9092>, <broker2:9092>
